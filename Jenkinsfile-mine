@@ -1,0 +1,24 @@
+pipeline {
+  agent any
+
+  tools {
+    maven 'M2_HOME'
+    }
+  
+  stages {
+    stage('CheckOut') {
+      steps {
+        echo 'Checkout the source code from GitHub'
+	git 'https://github.com/Sanumouni/star-agile-banking-finance.git'
+            }
+    }
+    
+    stage('Package the Application') {
+      steps {
+        echo " Packaging the Application"
+        sh 'mvn clean package'
+            }
+        }
+    } 
+}
+
