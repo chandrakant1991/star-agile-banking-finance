@@ -19,11 +19,12 @@ pipeline {
         sh 'mvn clean package'
             }
         }
+
     stage('publishing HTML report using TestNG') {
       steps {
         echo 'publishing the Reports'
-	testNG reportFilenamePattern: '/var/lib/jenkins/workspace/bankingproject/testng-results.xml'
-                                            } 
+        testNG reportFilenamePattern: '**/target/testng-results.xml'  
+                                   } 
              }
        }
 }
