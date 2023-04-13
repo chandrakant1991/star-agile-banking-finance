@@ -26,6 +26,12 @@ pipeline {
         testNG reportFilenamePattern: '**/target/testng-results.xml'  
                                    } 
              }
+    post {
+    always {
+        junit 'testng-output/*.xml'
+        publishTestNGReports reportDirs: '**/target/testng-results.xml'
+               }
+            }
        }
 }
 
