@@ -19,13 +19,20 @@ pipeline {
         sh 'mvn clean package'
             }
         }
+        
     stage('Publishing the reports') {
       steps {
         echo 'publishing the reports'
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/bankingproject', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
             }
         }
-     
+    stage('creating image') {
+      steps {
+        echo 'creating image'
+        sh 'docker build -t mouni1arjun/banking-project:latest 
+             }
+        }
+    
        }
 }
 
