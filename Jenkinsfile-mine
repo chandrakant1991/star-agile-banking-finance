@@ -33,6 +33,19 @@ pipeline {
              }
         }
     
+    stage('Docker login') {
+      steps {
+        echo 'Logging into Dockerhub'
+	 withCredentials([usernamePassword(credentialsId: 'Docker', passwordVariable: 'DockerHub-passwrd', usernameVariable: 'DockerHub-username')]) {
+         sh 'docker login -u ${env.DockerHub-username} -p ${env.DockerHub-passwrd}'
+}
+             }
+        }
+    stage('Pushing Docker image to Dockerhub') {
+      steps {
+         sh 'docker push mouni1arjun/banking-project:latest'
+                  } 
+            }  
        }
 }
 
