@@ -29,7 +29,7 @@ pipeline {
     stage('creating image') {
       steps {
         echo 'creating image'
-        sh 'docker build -t mouni1arjun/banking-project:latest 
+        sh 'docker build -t mouni1arjun/banking-project:latest .' 
              }
         }
     
