@@ -56,5 +56,11 @@ pipeline {
              
        }
 }
+    stage('Deploying the app through ansible') {
+      steps {
+         sh 'ansible-playbook bankingplaybook.yml'
+                  }
+            }
+	
 }
 }
