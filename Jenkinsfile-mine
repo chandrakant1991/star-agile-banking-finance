@@ -45,7 +45,17 @@ pipeline {
       steps {
          sh 'docker push mouni1arjun/banking-project:latest'
                   } 
-            }  
+            }
+    stage ('Configure Test-server with Terraform'){
+            steps {
+                dir('deployneeds'){
+                sh 'sudo chmod 600 pemfile.pem'
+                sh 'terraform init'
+                sh 'terraform validate'
+                sh 'terraform apply --auto-approve'
+                }
+             
        }
 }
-
+}
+}
