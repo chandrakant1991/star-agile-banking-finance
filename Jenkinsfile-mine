@@ -49,7 +49,6 @@ pipeline {
     stage ('Configure Test-server with Terraform'){
             steps {
                 dir('deployneeds'){
-                sh 'sudo chmod 600 pemfile.pem'
                 sh 'terraform init'
                 sh 'terraform validate'
                 sh 'terraform apply --auto-approve'
