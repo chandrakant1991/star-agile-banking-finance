@@ -26,37 +26,7 @@ pipeline {
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/bankingproject', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
             }
         }
-    stage('creating image') {
-      steps {
-        echo 'creating image'
-        sh 'docker build -t mouni1arjun/banking-project:latest .' 
-             }
-        }
     
-    stage('Docker login') {
-      steps {
-        echo 'Logging into Dockerhub'
-	withCredentials([usernamePassword(credentialsId: 'Docker', passwordVariable: 'Dockerubpasswrd', usernameVariable: 'dockerHubusername')]) {
-        sh "docker login -u ${env.dockerHubusername} -p ${env.Dockerubpasswrd}"
-}
-             }
-        }
-    stage('Pushing Docker image to Dockerhub') {
-      steps {
-         sh 'docker push mouni1arjun/banking-project:latest'
-                  } 
-            }
-    stage ('Configure Test-server with Terraform'){
-            steps {
-                dir('deployneeds'){
-                sh 'sudo chmod 600 manu.pem'
-                sh 'terraform init'
-                sh 'terraform validate'
-                sh 'terraform apply --auto-approve'
-                }
-             
-       }
-}
-	
+   
 }
 }
