@@ -25,6 +25,28 @@ pipeline {
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/bankingproject', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
             }
         }
+    
+    stage('docker image build') {
+      steps {
+        echo "docker image build "
+	sh 'docker build -t noor1718/banking-project:latest .'           
+ }
+}
+    stage('docker login') {
+      steps {
+        echo "docker login "
+	withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubpasswrd', usernameVariable: 'dockerhubusername')]) {
+	sh "docker login -u ${env.dockerhubusername} -p ${env.Dockerhubpasswrd}"
+}
+ }
+    stage('docker push') {
+      steps {
+        echo "docker push "
+	sh "docker push noor1718/banking-project:latest"
+}
+ }
+
+        }
     }
    
 }
