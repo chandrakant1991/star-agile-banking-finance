@@ -38,7 +38,8 @@ pipeline {
 	withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubpasswrd', usernameVariable: 'dockerhubusername')]) {
 	sh "docker login -u ${env.dockerhubusername} -p ${env.Dockerhubpasswrd}"
 }
- }
+}
+}
     stage('docker push') {
       steps {
         echo "docker push "
@@ -49,5 +50,5 @@ pipeline {
         }
     }
    
-}
+
 
