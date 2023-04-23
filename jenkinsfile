@@ -9,7 +9,7 @@ pipeline {
     stage('CheckOut') {
       steps {
         echo 'Checkout the source code from GitHub'
-	git ''https://github.com/noor1718/star-agile-banking-finance.git
+	git 'https://github.com/noor1718/star-agile-banking-finance.git'
             }
     }
     
