@@ -33,6 +33,14 @@ pipeline {
 	sh 'docker build -t noor1718/finance:latest .'           
  }
 }
+stage('docker login') {
+      steps {
+        echo "docker login "
+	withCredentials([usernamePassword(credentialsId: 'dockerlogin', passwordVariable: 'dockerhubpasswrd', usernameVariable: 'dockerhubusername')]) {
+	sh "docker login -u ${env.dockerhubusername} -p ${env.dockerhubpasswrd}"
+}
+}
+}
     
     
     
