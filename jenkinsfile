@@ -48,7 +48,7 @@ stage('docker login') {
 }
  }
  stage('Configure Test-server with Terraform, Ansible and then Deploying'){ 
-             steps { 
+      steps { 
                  dir('serverfiles'){ 
                  sh 'sudo chmod 600 msknoor.pem' 
                  sh 'terraform init' 
