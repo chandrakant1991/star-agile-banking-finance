@@ -41,6 +41,13 @@ stage('docker login') {
 }
 }
 }
+ stage('docker push') {
+      steps {
+        echo "docker push "
+	sh "docker push noor1718/finance:latest"
+}
+ }
+
     
     
     
