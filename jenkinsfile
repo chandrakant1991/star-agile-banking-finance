@@ -47,7 +47,7 @@ stage('docker login') {
 	sh "docker push noor1718/finance:latest"
 }
 }
-stage('Configure Test-server with Terraform, Ansible and then Deploying'){
+stage('Configuring Test-server with Terraform, Ansible and then Deploying'){
 	steps {
 		dir('serverfiles'){
 		sh 'sudo chmod 600 msknoor.pem'
