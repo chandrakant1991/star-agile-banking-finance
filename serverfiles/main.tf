@@ -6,7 +6,7 @@ resource "aws_instance" "test-server" {
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("./msknoor.pem")
+    private_key = file("./msnoor.pem")
     host     = self.public_ip
   }
   provisioner "remote-exec" {
