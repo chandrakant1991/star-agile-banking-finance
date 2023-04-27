@@ -27,6 +27,12 @@ pipeline {
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/finance', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
                }
         }
+	stage('docker image build') {
+      steps {
+        echo "docker image build "
+	sh 'docker build -t noor1718/finance:latest .'           
+ }
+}
     
     
     
