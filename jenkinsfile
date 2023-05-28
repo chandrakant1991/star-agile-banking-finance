@@ -10,7 +10,7 @@ pipeline {
     stage('CheckOut') {
       steps {
         echo 'Checkout the source code from GitHub'
-	git 'https://github.com/noor1718/star-agile-banking-finance.git'
+	git 'https://github.com/chandrakant1991/star-agile-banking-finance.git'
             }
     }
     stage('Package the Application') {
@@ -30,7 +30,7 @@ pipeline {
 	stage('docker image build') {
       steps {
         echo "docker image build "
-	sh 'docker build -t noor1718/finance:latest .'           
+	sh 'docker build -t chandrakant1991/finance:latest .'           
  }
 }
 stage('docker login') {
